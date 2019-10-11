@@ -24,7 +24,7 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
      * 判断是否需要对响应进行处理
      * @param methodParameter
      * @param aClass
-     * @return
+     * @return false: 不需要处理; true: 需要处理
      */
     @Override
     @SuppressWarnings("all")

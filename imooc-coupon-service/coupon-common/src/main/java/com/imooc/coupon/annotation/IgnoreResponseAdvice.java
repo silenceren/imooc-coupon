@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * 忽略统一响应注解定义
+ * 可以应用到类上，也可以应用到方法上
  */
 
 @Target({ElementType.TYPE, ElementType.METHOD})
