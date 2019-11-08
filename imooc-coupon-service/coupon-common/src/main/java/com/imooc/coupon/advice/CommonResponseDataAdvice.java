@@ -45,7 +45,6 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
         }
 
         //对响应进行处理，执行 beforeBodyWrite 方法
-
         return true;
     }
 
