@@ -1,7 +1,6 @@
 package com.imooc.coupon.dao;
 
 import com.imooc.coupon.entity.CouponTemplate;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
