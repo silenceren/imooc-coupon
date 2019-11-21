@@ -20,8 +20,10 @@ import java.util.Map;
 @Slf4j
 @RestController
 public class HealthCheck {
+
     /** 服务发现客户端 */
     private final DiscoveryClient client;
+
     /** 服务注册接口，提供了获取服务 id 的方法 */
     private final Registration registration;
 
