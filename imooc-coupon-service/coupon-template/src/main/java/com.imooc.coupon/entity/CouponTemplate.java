@@ -13,6 +13,7 @@ import com.imooc.coupon.vo.TemplateRule;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -76,6 +77,7 @@ public class CouponTemplate implements Serializable {
     private Integer count;
 
     /** 创建时间 */
+    @CreatedDate
     @Column(name = "create_time", nullable = false)
     private Date createTime;
 
