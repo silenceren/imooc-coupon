@@ -56,6 +56,11 @@ public class HealthCheck {
         throw new CouponException("CouponTemplate Has Some Problem");
     }
 
+    /**
+     * <h2>获取 Eureka Server 上的微服务元信息</h2>
+     * 127.0.0.1:7001/coupon-template/info
+     * */
+    @GetMapping("/info")
     public List<Map<String, Object>> info() {
 
         //大约需要等待两分钟才能获取到注册信息

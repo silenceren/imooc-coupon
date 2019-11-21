@@ -34,6 +34,7 @@ public class CouponTemplateController {
     /**
      * 构建优惠券模板
      * 127.0.0.1:7001/coupon-template/template/build
+     * 127.0.0.1:9000/imooc/coupon-template/template/build   网关访问
      * @param request
      * @return
      * @throws CouponException

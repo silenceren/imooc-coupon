@@ -58,7 +58,7 @@ public class TemplateBaseServiceImpl implements ITemplateBaseService {
     @Override
     public List<CouponTemplateSDK> findAllUsableTemplate() {
 
-        List<CouponTemplate> templates = templateDao.findAllByAvailableAAndExpired(true, false);
+        List<CouponTemplate> templates = templateDao.findAllByAvailableAndExpired(true, false);
 
         return templates.stream().map(this::template2TemplateSDK).collect(Collectors.toList());
     }
