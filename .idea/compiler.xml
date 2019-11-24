@@ -6,16 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="coupon-common" />
-        <module name="coupon-eureka" />
-        <module name="coupon-gateway" />
         <module name="coupon-template" />
+        <module name="coupon-common" />
+        <module name="coupon-distribution" />
+        <module name="coupon-gateway" />
+        <module name="coupon-eureka" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="coupon-common" options="-parameters" />
+      <module name="coupon-distribution" options="-parameters" />
       <module name="coupon-eureka" options="-parameters" />
       <module name="coupon-gateway" options="-parameters" />
       <module name="coupon-template" options="-parameters" />
