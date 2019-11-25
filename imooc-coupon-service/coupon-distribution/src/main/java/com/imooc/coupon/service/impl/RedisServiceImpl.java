@@ -9,6 +9,7 @@ import com.imooc.coupon.service.IRedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.RandomUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.SessionCallback;
@@ -29,6 +30,7 @@ public class RedisServiceImpl implements IRedisService {
     /**  */
     private final StringRedisTemplate redisTemplate;
 
+    @Autowired
     public RedisServiceImpl(StringRedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
