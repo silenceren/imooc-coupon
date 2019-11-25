@@ -8,7 +8,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 public interface IKafkaService {
 
     /**
-     * 消费优惠券 Kafka 消息I
+     * 消费优惠券 Kafka 消息
      * @param record
      */
     void consumeCouponKafkaMessage(ConsumerRecord<?, ?> record);
