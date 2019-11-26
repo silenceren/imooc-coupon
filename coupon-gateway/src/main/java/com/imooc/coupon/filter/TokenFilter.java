@@ -31,6 +31,12 @@ public class TokenFilter extends AbstractPreZuulFilter {
         return success();
     }
 
+    /**
+     * filterOrder() must also be defined for a filter. Filters may have the same  filterOrder if precedence is not
+     * important for a filter. filterOrders do not need to be sequential.
+     *
+     * @return the int order of a filter
+     */
     @Override
     public int filterOrder() {
         return 1;
