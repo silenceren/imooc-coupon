@@ -260,6 +260,7 @@ public class UserServiceImpl implements IUserService {
         List<Coupon> settleCoupons = new ArrayList<>(ctInfos.size());
         ctInfos.forEach(ci -> settleCoupons.add(id2Coupon.get(ci.getId())));
 
+        // 通过结算服务获取结算信息
         SettlementInfo processedInfo = settlementClient.computeRule(info).getData();
         if (processedInfo.getEmploy() && CollectionUtils.isNotEmpty(processedInfo.getCouponAndTemplateInfos())) {
             log.info("Settle USer Coupon: {}, {}", info.getUserId(), JSON.toJSONString(settleCoupons));
