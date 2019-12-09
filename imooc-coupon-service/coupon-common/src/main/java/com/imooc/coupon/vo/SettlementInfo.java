@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  * 结算信息对象定义
- *
  * 1. userId
  * 2. 商品信息（列表）
  * 3. 优惠券列表
