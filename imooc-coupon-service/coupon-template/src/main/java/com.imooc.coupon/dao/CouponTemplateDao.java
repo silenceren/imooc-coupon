@@ -20,7 +20,6 @@ public interface CouponTemplateDao extends JpaRepository<CouponTemplate, Integer
 
     /**
      * 根据available 和 expired 标记查找模板记录
-     *
      * where available = ... and expired = ...
      * @param available
      * @param expired

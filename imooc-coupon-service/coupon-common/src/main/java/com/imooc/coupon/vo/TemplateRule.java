@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @program: imooc-coupon
- * @description: 优惠券规则对象定义
- * @author: tianwei
- * @create: 2019-11-04 17:48
+ * <h1>优惠券规则对象定义</h1>
  */
 @Data
 @NoArgsConstructor
@@ -23,53 +20,60 @@ public class TemplateRule {
     /** 折扣 */
     private Discount discount;
 
-    /** 每个人最多领几张限制 */
+    /** 每个人最多领几张的限制 */
     private Integer limitation;
 
-    /** 使用范围： 地域 + 商品类型 */
+    /** 使用范围: 地域 + 商品类型 */
     private Usage usage;
 
-    /** 权重（可以和那些优惠券叠加使用，同一类的优惠券一定不能叠加）： list[], 优惠券的唯一编码*/
+    /** 权重(可以和哪些优惠券叠加使用, 同一类的优惠券一定不能叠加): list[], 优惠券的唯一编码 */
     private String weight;
 
-
-    /** 校验功能 */
+    /**
+     * <h2>校验功能</h2>
+     * */
     public boolean validate() {
 
-        return expiration.validate() && discount.validate() && limitation > 0 && usage.validate() && StringUtils.isNotEmpty(weight);
+        return expiration.validate() && discount.validate()
+                && limitation > 0 && usage.validate()
+                && StringUtils.isNotEmpty(weight);
     }
 
-
-    /** 有效期限规则*/
+    /**
+     * <h2>有效期限规则</h2>
+     * */
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Expiration {
-        /** 有效期限规则,对应 PeriodType 的 code 字段 */
+
+        /** 有效期规则, 对应 PeriodType 的 code 字段 */
         private Integer period;
 
-        /** 有效间隔：只对变动性有效期有效 */
+        /** 有效间隔: 只对变动性有效期有效 */
         private Integer gap;
 
-        /** 优惠券模板的失效日期，两类规则都有效 */
+        /** 优惠券模板的失效日期, 两类规则都有效 */
         private Long deadline;
 
         boolean validate() {
-            //最简化校验
+            // 最简化校验
             return null != PeriodType.of(period) && gap > 0 && deadline > 0;
         }
     }
 
-    /** 折扣，需要和类型配合决定*/
+    /**
+     * <h2>折扣, 需要与类型配合决定</h2>
+     * */
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Discount {
 
-        /** 额度：满减（20） 折扣（85）， 立减（10）*/
+        /** 额度: 满减(20), 折扣(85), 立减(10) */
         private Integer quota;
 
-        /** 基准，需要满多少才可用*/
+        /** 基准, 需要满多少才可用 */
         private Integer base;
 
         boolean validate() {
@@ -78,7 +82,9 @@ public class TemplateRule {
         }
     }
 
-    /** 使用范围 */
+    /**
+     * <h2>使用范围</h2>
+     * */
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
@@ -90,12 +96,14 @@ public class TemplateRule {
         /** 城市 */
         private String city;
 
-        /** 商品类型，list[文娱，生鲜，家具，全品类] */
-        private String goodType;
+        /** 商品类型, list[文娱, 生鲜, 家居, 全品类] */
+        private String goodsType;
 
         boolean validate() {
-            return StringUtils.isNotEmpty(province) && StringUtils.isNotEmpty(city) && StringUtils.isNotEmpty(goodType);
+
+            return StringUtils.isNotEmpty(province)
+                    && StringUtils.isNotEmpty(city)
+                    && StringUtils.isNotEmpty(goodsType);
         }
     }
-
 }

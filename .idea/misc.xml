@@ -8,6 +8,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/imooc-coupon-service/coupon-permission-service/pom.xml" />
       </list>
     </option>
   </component>

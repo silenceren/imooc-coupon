@@ -12,6 +12,7 @@
         <module>coupon-eureka</module>
         <module>coupon-gateway</module>
         <module>imooc-coupon-service</module>
+        <module>coupon-permission-service</module>
     </modules>
 
     <name>imooc-coupon</name>

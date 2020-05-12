@@ -52,7 +52,7 @@ public class ManJianZheKouExecutor extends AbstractExecutor implements RuleExecu
         List<Integer> goodsType = settlement.getGoodsInfos().stream().map(GoodsInfo::getType).collect(Collectors.toList());
         List<Integer> templateGoodsType = new ArrayList<>();
         settlement.getCouponAndTemplateInfos().forEach(ct -> {
-            templateGoodsType.addAll(JSON.parseObject(ct.getTemplate().getRule().getUsage().getGoodType(), List.class));
+            templateGoodsType.addAll(JSON.parseObject(ct.getTemplate().getRule().getUsage().getGoodsType(), List.class));
         });
 
         // 如果想要使用多类优惠券，则必须要所有的商品类型都包含在内，即差集为空

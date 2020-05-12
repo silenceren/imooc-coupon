@@ -16,7 +16,7 @@ spring:
     open-in-view: false
   datasource:
     # 数据源
-    url: jdbc:mysql://192.168.1.4:3306/imooc_coupon_data?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://192.168.2.111:3306/imooc_coupon_data?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 123456
     type: com.zaxxer.hikari.HikariDataSource
@@ -32,14 +32,14 @@ spring:
       pool-name: ImoocCouponHikariCP
   redis:
     database: 0
-    host: 192.168.1.4
+    host: 192.168.2.111
     port: 6379
     # password:
     # 连接超时时间
     timeout: 10000
   kafka:
     bootstrap-servers:
-      - 192.168.1.4:9092
+      - 192.168.2.111:9092
     consumer:
       group-id: imooc-coupon-x
       auto-offset-reset: latest

@@ -8,6 +8,7 @@ import com.imooc.coupon.service.ITemplateBaseService;
 import com.imooc.coupon.vo.CouponTemplateSDK;
 import com.imooc.coupon.vo.TemplateRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -26,6 +27,7 @@ public class CouponTemplateController {
     /** 优惠券模板基础服务 */
     private final ITemplateBaseService templateBaseService;
 
+    @Autowired
     public CouponTemplateController(IBuildTemplateService buildTemplateService, ITemplateBaseService templateBaseService) {
         this.buildTemplateService = buildTemplateService;
         this.templateBaseService = templateBaseService;

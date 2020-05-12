@@ -36,6 +36,7 @@ public class HealthCheck {
     /**
      * 健康检查接口
      * 127.0.0.1.7001/coupon-template/health
+     * http://localhost:9000/imooc/coupon-template/health
      * @return
      */
     @GetMapping("/health")

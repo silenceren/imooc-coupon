@@ -50,10 +50,12 @@ public class TemplateRequest {
     /** 校验对象的合法性 */
     public boolean validate() {
 
-        boolean stringValid = StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(logo) && StringUtils.isNotEmpty(desc);
-
-        boolean enumValid = null != CouponCategory.of(category) && null != ProductLine.of(productLine) && null != DistributeTarget.of(target);
-
+        boolean stringValid = StringUtils.isNotEmpty(name)
+                && StringUtils.isNotEmpty(logo)
+                && StringUtils.isNotEmpty(desc);
+        boolean enumValid = null != CouponCategory.of(category)
+                && null != ProductLine.of(productLine)
+                && null != DistributeTarget.of(target);
         boolean numValid = count > 0 && userId > 0;
 
         return stringValid && enumValid && numValid && rule.validate();

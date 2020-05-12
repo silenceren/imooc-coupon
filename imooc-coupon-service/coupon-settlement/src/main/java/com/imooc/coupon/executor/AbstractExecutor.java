@@ -33,7 +33,7 @@ public abstract class AbstractExecutor {
         List<Integer> goodsType = settlement.getGoodsInfos()
                 .stream().map(GoodsInfo::getType)
                 .collect(Collectors.toList());
-        List<Integer> templateGoodsType = JSON.parseObject(settlement.getCouponAndTemplateInfos().get(0).getTemplate().getRule().getUsage().getGoodType(), List.class);
+        List<Integer> templateGoodsType = JSON.parseObject(settlement.getCouponAndTemplateInfos().get(0).getTemplate().getRule().getUsage().getGoodsType(), List.class);
 
         //存在交集即可
         return CollectionUtils.isNotEmpty(CollectionUtils.intersection(goodsType, templateGoodsType));

@@ -23,6 +23,11 @@ zuul:
       path: /coupon-distribution/**
       serviceId: eureka-client-coupon-distribution
       strip-prefix: false
+    # 优惠券结算微服务路由配置定义
+    settlement:
+      path: /coupon-settlement/**
+      serviceId: eureka-client-coupon-settlement
+      strip-prefix: false
   host:
     connect-timeout-millis: 15000
     socket-timeout-millis: 60000
