@@ -15,9 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
+import java.util.*;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -29,20 +28,76 @@ public class BuildTemplateServiceTest {
     @Test
     public void buildTemplate() throws Exception {
 
-        System.out.println(JSON.toJSONString(buildTemplateService.buildTemplate(fakeTemplateRequest())));
-        Thread.sleep(5000);
+//        System.out.println(JSON.toJSONString(buildTemplateService.buildTemplate(fakeTemplateRequest())));
+
+        MyCache myCache = new MyCache();
+
+        for (int i = 0; i < 10000; i++) {
+
+            new Thread(() -> {
+                myCache.put(Thread.currentThread().getName());
+            }, String.valueOf(i)).start();
+
+        }
 
     }
 
-    private TemplateRequest fakeTemplateRequest() {
+//    private TemplateRequest fakeTemplateRequest(String name) {
+//
+//        TemplateRequest request = new TemplateRequest();
+//        request.setName("优惠券模板-" + name);
+//        request.setLogo(name);
+//        request.setDesc("优惠券");
+//        request.setCategory(CouponCategory.MANJIAN.getCode());
+//        request.setProductLine(ProductLine.DAMAO.getCode());
+//        request.setCount(10);
+//        request.setUserId(10001L);
+//        request.setTarget(DistributeTarget.SINGLE.getCode());
+//
+//        TemplateRule rule = new TemplateRule();
+//        rule.setExpiration(new TemplateRule.Expiration(
+//                PeriodType.SHIFT.getCode(), 1, DateUtils.addDays(new Date(), 60).getTime()
+//        ));
+//        rule.setDiscount(new TemplateRule.Discount(5, 1));
+//        rule.setLimitation(1);
+//        rule.setUsage(new TemplateRule.Usage("北京","北京市", JSON.toJSONString(Arrays.asList("文娱", "家居"))));
+//        rule.setWeight(JSON.toJSONString(Collections.EMPTY_LIST));
+//
+//        request.setRule(rule);
+//
+//        return request;
+//    }
+
+}
+
+class MyCache {
+
+    @Autowired
+    private IBuildTemplateService buildTemplateService;
+
+    private ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
+
+    public void put(String name) {
+        rwLock.writeLock().lock();
+        try {
+            buildTemplateService.buildTemplate(fakeTemplateRequest(name));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            rwLock.writeLock().unlock();
+        }
+
+    }
+
+    private TemplateRequest fakeTemplateRequest(String name) {
 
         TemplateRequest request = new TemplateRequest();
-        request.setName("优惠券模板-" + new Date().getTime());
-        request.setLogo("hahahahaha");
-        request.setDesc("优惠券");
+        request.setName("优惠券模板-" + name);
+        request.setLogo(name);
+        request.setDesc("优惠券" + name);
         request.setCategory(CouponCategory.MANJIAN.getCode());
         request.setProductLine(ProductLine.DAMAO.getCode());
-        request.setCount(10000);
+        request.setCount(10);
         request.setUserId(10001L);
         request.setTarget(DistributeTarget.SINGLE.getCode());
 
@@ -52,11 +107,12 @@ public class BuildTemplateServiceTest {
         ));
         rule.setDiscount(new TemplateRule.Discount(5, 1));
         rule.setLimitation(1);
-        rule.setUsage(new TemplateRule.Usage("北京","北京市", JSON.toJSONString(Arrays.asList("文娱", "家居"))));
+        rule.setUsage(new TemplateRule.Usage(name,name, JSON.toJSONString(Arrays.asList("文娱", "家居"))));
         rule.setWeight(JSON.toJSONString(Collections.EMPTY_LIST));
 
         request.setRule(rule);
 
         return request;
     }
+
 }

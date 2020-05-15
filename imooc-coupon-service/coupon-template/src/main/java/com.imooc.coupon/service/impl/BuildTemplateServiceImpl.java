@@ -1,14 +1,26 @@
 package com.imooc.coupon.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.imooc.coupon.constant.CouponCategory;
+import com.imooc.coupon.constant.DistributeTarget;
+import com.imooc.coupon.constant.PeriodType;
+import com.imooc.coupon.constant.ProductLine;
 import com.imooc.coupon.dao.CouponTemplateDao;
 import com.imooc.coupon.entity.CouponTemplate;
 import com.imooc.coupon.exception.CouponException;
 import com.imooc.coupon.service.IAsyncService;
 import com.imooc.coupon.service.IBuildTemplateService;
 import com.imooc.coupon.vo.TemplateRequest;
+import com.imooc.coupon.vo.TemplateRule;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @program: imooc-coupon
